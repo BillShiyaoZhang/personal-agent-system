@@ -1,0 +1,2 @@
+- | Choose a model
+mlx-community/Qwen2.5-32B-Instruct-4bit                 | QWen 2.5 - 32 B

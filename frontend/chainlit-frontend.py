@@ -4,7 +4,7 @@ import chainlit as cl
 client = AsyncOpenAI(base_url="http://localhost:8080/v1", api_key="fake-key")
 cl.instrument_openai()
 settings = {
-    "model": "mlx-community/Qwen2.5-14B-Instruct-4bit",
+    "model": "mlx-community/Qwen2.5-32B-Instruct-4bit",
     "temperature": 0,
 }
 
