@@ -1,5 +1,7 @@
 import os
 from langchain_community.llms.mlx_pipeline import MLXPipeline
+from langchain_openai import ChatOpenAI
+
 
 def setLangSmith():
     """
@@ -25,3 +27,9 @@ def getChatMLX():
     from langchain_community.chat_models.mlx import ChatMLX
     model = ChatMLX(llm=llm)
     return model
+
+
+def getOpenAIMLX():
+    model = ChatOpenAI(model="mlx-community/Qwen2.5-32B-Instruct-4bit", max_tokens=4000,
+                  base_url="http://localhost:10240/v1",
+                  api_key="not-needed")
