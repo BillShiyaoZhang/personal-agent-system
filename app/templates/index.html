@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Model Manager</title>
+</head>
+<body>
+    {% if downloaded %}
+      <p>Model {{ downloaded }} downloaded successfully.</p>
+    {% endif %}
+    <h1>Local Models</h1>
+    {% for model in local_models %}
+        <div>
+            <span>{{ model }}</span>
+            <button onclick="location.href='/models/{{ model }}'">View Details</button>
+            <button onclick="removeModel('{{ model }}')">Remove</button>
+        </div>
+    {% endfor %}
+
+    <h1>Downloadable Models</h1>
+    {% if downloadable_models %}
+        {% for model in downloadable_models %}
+            <p>{{ model }}</p>
+        {% endfor %}
+    {% else %}
+        <p>No downloadable models.</p>
+    {% endif %}
+
+    <form method="POST" action="/models">
+        <input type="text" name="model_name" placeholder="Enter model name" />
+        <button type="submit">Download Model</button>
+    </form>
+    <script>
+    function removeModel(modelName) {
+      fetch('/models/' + modelName, { method: 'DELETE' })
+        .then(() => location.reload());
+    }
+    </script>
+</body>
+</html>
