@@ -5,3 +5,4 @@ __pycache__/
 LangGraph tutorials-langchain-academy-main/
 .vscode/
 .DS_Store
+.coverage

@@ -43,9 +43,10 @@ class ModelMgr:
         if response.status_code == 200:
             models = response.json().get('models', [])
             self.local_models = [model['name'] for model in models]
+            return self.local_models
         else:
             print(f"Failed to fetch local models: {response.status_code}")
-        return self.local_models
+            return []
 
     def show_model_details(self, model_name):
         """Show details of a specific local model"""

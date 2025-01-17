@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Apps Management</title>
+</head>
+<body>
+    <h1>Chat Apps Management</h1>
+
+    <h2>Installable Apps</h2>
+    <ul>
+        {% for app in installable_apps %}
+        <li>
+            {{ app.name }}
+            <form action="{{ url_for('chat_app_mgr_view.install_app') }}" method="post" style="display:inline;">
+                <input type="hidden" name="app_name" value="{{ app.name }}">
+                <button type="submit">Install</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Local Apps</h2>
+    <ul>
+        {% for app in local_apps %}
+        <li>
+            {{ app.name }}
+            <form action="{{ url_for('chat_app_mgr_view.connect_app') }}" method="post" style="display:inline;">
+                <input type="hidden" name="app_name" value="{{ app.name }}">
+                <input type="text" name="model_name" placeholder="Model Name" required>
+                <button type="submit">Connect</button>
+            </form>
+            <a href="{{ url_for('chat_app_mgr_view.open_app', app_name=app.name) }}">Open</a>
+            <a href="{{ url_for('chat_app_mgr_view.uninstall_app', app_name=app.name) }}">Uninstall</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <!-- 添加返回主页的链接 -->
+    <a href="{{ url_for('index') }}">Back to Index</a>
+</body>
+</html>
