@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{model_name}} Details</title>
+</head>
+<body>
+    <h1>{{model_name}} Details</h1>
+    <div>
+        <strong>Architecture:</strong> {{ details.model_info["general.architecture"] }}
+    </div>
+    <div>
+        <strong>Base model name:</strong> {{ details.model_info["general.base_model.0.name"] }}
+    </div>
+    <div>
+        <strong>Base model organization:</strong> {{ details.model_info["general.base_model.0.organization"] }}
+    </div>
+    <div>
+        <strong>Base model repo:</strong> <a href="{{ details.model_info["general.base_model.0.repo_url"] }}">{{ details.model_info["general.base_model.0.repo_url"] }}</a>
+    </div>
+    <div>
+        <strong>Parameter Size:</strong> {{ details.model_info["general.size_label"] }}
+    </div>
+    <div>
+        <strong>Format:</strong> {{ details.model_info["general.file_type"] }}
+    </div>
+    <div>
+        <strong>Quantization Level:</strong> {{ details.model_info["general.quantization_version"] }}
+    </div>
+    <div>
+        <strong>Languages:</strong> {{ ', '.join(details.model_info["general.languages"]) }}
+    </div>
+    <div>
+        <strong>License:</strong> {{ details.model_info["general.license"] }}
+    </div>
+    <div>
+        <strong>License Link:</strong> <a href="{{ details.model_info["general.license.link"] }}">{{ details.model_info["general.license.link"] }}</a>
+    </div>
+    <div>
+        <strong>Details:</strong>
+        <pre>{{ details.details | tojson(indent=2) }}</pre>
+    </div>
+    <a href="{{ url_for('model_mgr_view.index') }}">Back to Models</a>
+</body>
+</html>

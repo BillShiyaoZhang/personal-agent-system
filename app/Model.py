@@ -2,7 +2,7 @@ class Model:
     """
     Model class represents a LLM model in the system.
 
-    For the first implementation, we only consider Ollama models.
+    For the first implementation, we only consider Ollama models.  So we don't actually need this class.
     
     Also, we can add more attributes in the future.
     For example, to include different types of models.

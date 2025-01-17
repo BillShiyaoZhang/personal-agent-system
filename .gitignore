@@ -4,3 +4,4 @@ __pycache__/
 .ipynb_checkpoints/
 LangGraph tutorials-langchain-academy-main/
 .vscode/
+.DS_Store

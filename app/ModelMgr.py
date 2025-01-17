@@ -31,8 +31,10 @@ class ModelMgr:
             print(f"Model {model_name} removed successfully.")
             # Update the local_models list
             self.local_models = [model for model in self.local_models if model != model_name]
+            return True
         else:
             print(f"Failed to remove model {model_name}: {response.status_code}")
+            return False
 
     def get_local_models(self):
         """Get the list of local models"""
